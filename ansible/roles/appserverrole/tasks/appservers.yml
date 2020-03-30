@@ -1,0 +1,27 @@
+---
+         - name: Remove Directory
+           file:
+              path: /home/ubuntu/appservers
+              state: absent
+           when: path != true
+ 
+
+         - name: Create a Directory
+           file:
+             path: /home/ubuntu/appservers
+             state: directory
+           when: path != true
+
+ 
+
+         - name: Cloning the git repository
+           git:
+              repo: https://ansible-story@dev.azure.com/ansible-story/springbootapp_mumbai/_git/springbootapp_mumbai
+              dest: /home/ubuntu/appservers/springbootapp_mumbai
+
+
+         - name: Maven Run
+           shell:
+           args:
+             cmd: echo "hi arti" >> arti.txt
+             chdir: /home/ubuntu/appservers/springbootapp_mumbai/FlightStatusServiceImpl
