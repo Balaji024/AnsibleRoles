@@ -1,14 +1,14 @@
 ---
          - name: Remove Directory
            file:
-              path: /home/ubuntu/appservers
+              path: {{ path }}
               state: absent
            when: path != true
  
 
          - name: Create a Directory
            file:
-             path: /home/ubuntu/appservers
+             path: {{ path }}
              state: directory
            when: path != true
 
